@@ -18,3 +18,4 @@ To reduce maternal health risks through early prediction and actionable insights
 
 ### Dashboard
 ![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard1.png)
+![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard2.png)
