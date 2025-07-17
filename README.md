@@ -1,8 +1,10 @@
 # SmartMum: Predicting and Visualizing Maternal Health Risk Through AI (XGBoost Model)
 ## Overview
-This project was developed for the 3MTT knowledge showcaseb(July Edition) its an AI-powered maternal health risk prediction tool built using BigQuery ML (XGBoost) and integrated with Power BI and Power Apps. It enables early identification of pregnancy-related complications by analyzing clinical and demographic data.
+This project was developed for the 3MTT knowledge showcase (July Edition), it's an AI-powered maternal health risk prediction tool built using BigQuery ML (XGBoost) and integrated with Power BI and Power Apps. It enables early identification of pregnancy-related complications by analyzing clinical and demographic data.
+
 ## Project Goal
 To reduce maternal health risks through early prediction and actionable insights for healthcare providers and expectant mothers.
+
 ## Project Components
 ### Executive Summary
 1. Model: XGBoost via BigQuery ML
@@ -19,3 +21,57 @@ To reduce maternal health risks through early prediction and actionable insights
 ### Dashboard
 ![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard1.png)
 ![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard2.png)
+
+### PowerApps Interface
+![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/powerapp%20interface.png)
+
+### Findings
+1. Model Performance: The XGBoost model achieved strong metrics — Accuracy: 89.6%, Recall: 87.3%, Precision: 88.1%, and AUC: 0.95, confirming its reliability in predicting maternal health risks.
+2. Risk Distribution: Most cases fall into the Medium Risk category, suggesting a window for preventive care. High-risk cases, though fewer, remain clinically significant.
+3. ANC Visits: Low or zero antenatal care visits strongly correlate with higher maternal health risk levels. Regular ANC visits are protective.
+4. Clinical Indicators: Elevated BMI, Heart Rate, Blood Pressure, and Body Temperature are key predictors of high-risk classifications.
+5. Demographics & Access: Both urban and rural regions exhibit similar risk trends. However, women with limited access to facilities or education face compounded risks.
+
+### Recommendation
+* Promote early and frequent ANC visits to shift risk levels from high to medium/low.
+* Integrate AI predictions into frontline healthcare tools for early intervention.
+* Train health workers to identify and act on clinical indicators such as elevated BP, BMI, and heart rate.
+* Expand outreach in low-access areas, especially for under-educated and rural populations.
+* Scale the SmartMum app across regions to support real-time maternal risk assessment.
+
+  ###  Tools Used
+- Google BigQuery ML – for training the XGBoost classification model to predict maternal risk levels.
+- Microsoft Power BI – for data visualization and dashboard development.
+- Microsoft Power Apps – to build a no-code, user-friendly maternal risk prediction form.
+- GitHub – for hosting project code and documentation
+- ChatGPT (by OpenAI) – for technical assistance
+### Data Source
+The dataset used for this project was adapted from the publicly available Maternal Health Risk Data Set on Kaggle. It includes clinical and demographic features of pregnant women such as:
+
+| Feature            | Description                                   |
+| ------------------ | ----------------------------------------------- |
+| Age                | Mother's age in years                           |
+| SystolicBP         | Systolic blood pressure                         |
+| DiastolicBP        | Diastolic blood pressure                        |
+| BS                 | Blood sugar level                               |
+| BodyTemp           | Body temperature in °C                          |
+| HeartRate          | Heart rate in BPM                               |
+| ANC\_Visits        | Number of antenatal care visits                 |
+| BMI                | Body Mass Index                                 |
+| Trimester          | Current trimester (1st, 2nd, 3rd)               |
+| Region             | Urban or Rural                                  |
+| Mother’s Education | Level of education (None, Primary, etc.)        |
+| Delivery\_History  | Frequency of prior deliveries (added manually)  |
+| Hospital\_Access   | Proximity to health facilities (added manually) |
+The dataset was enhanced with additional fields such as Delivery History and Hospital Access to improve model performance and insights for risk prediction.
+The dataset was cleaned, transformed, and used in training an AI model (XGBoost) for maternal risk prediction using Google BigQuery ML.
+
+### Links
+- [BigQuery](https://console.cloud.google.com/bigquery?sq=954458391922:ad90499052664c02a6328e99d623c19f)
+- [Power App](https://apps.powerapps.com/play/e/default-18f15a3f-ea52-4261-b725-0b0f0d1bab03/a/3f4e200a-5ef6-4243-a44a-16aac7ab0a22?tenantId=18f15a3f-ea52-4261-b725-0b0f0d1bab03&hint=19c11dff-6196-48df-8786-c149e04f3516&source=sharebutton&sourcetime=1752784196040)
+
+  ##  Author
+**Temitope Adepoju**  
+Driven by a mission to make maternal health safer through data.
+
+
