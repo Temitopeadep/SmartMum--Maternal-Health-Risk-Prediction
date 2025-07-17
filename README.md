@@ -1,4 +1,7 @@
 # SmartMum: Predicting and Visualizing Maternal Health Risk Through AI (XGBoost Model)
+![Model Accuracy](https://img.shields.io/badge/Accuracy-89.6%25-brightgreen)
+![AUC Score](https://img.shields.io/badge/AUC-0.95-blue)
+
 ## Overview
 This project was developed for the 3MTT knowledge showcase (July Edition), it's an AI-powered maternal health risk prediction tool built using BigQuery ML (XGBoost) and integrated with Power BI and Power Apps. It enables early identification of pregnancy-related complications by analyzing clinical and demographic data.
 
@@ -18,7 +21,13 @@ To reduce maternal health risks through early prediction and actionable insights
 - Power BI dashboard with demographics, clinical variables, and trends.
 - Power Apps form for public access without technical knowledge.
 
-### Dashboard
+### Data Source
+Dataset: [Maternal Health Risk | Kaggle](...)
+- 1,000 anonymized records  
+- Core columns: Age, BP, BS, BodyTemp, HeartRate, BMI, ANC Visits, Trimester, Region, Education  
+- Enhanced columns: Delivery History, Hospital Access
+
+  ### Dashboard
 ![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard1.png)
 ![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard2.png)
 
@@ -45,26 +54,6 @@ To reduce maternal health risks through early prediction and actionable insights
 - Microsoft Power Apps – to build a no-code, user-friendly maternal risk prediction form.
 - GitHub – for hosting project code and documentation
 - ChatGPT (by OpenAI) – for technical assistance
-### Data Source
-The dataset used for this project was adapted from the publicly available Maternal Health Risk Data Set on Kaggle. It includes clinical and demographic features of pregnant women such as:
-
-| Feature            | Description                                   |
-| ------------------ | ----------------------------------------------- |
-| Age                | Mother's age in years                           |
-| SystolicBP         | Systolic blood pressure                         |
-| DiastolicBP        | Diastolic blood pressure                        |
-| BS                 | Blood sugar level                               |
-| BodyTemp           | Body temperature in °C                          |
-| HeartRate          | Heart rate in BPM                               |
-| ANC\_Visits        | Number of antenatal care visits                 |
-| BMI                | Body Mass Index                                 |
-| Trimester          | Current trimester (1st, 2nd, 3rd)               |
-| Region             | Urban or Rural                                  |
-| Mother’s Education | Level of education (None, Primary, etc.)        |
-| Delivery\_History  | Frequency of prior deliveries (added manually)  |
-| Hospital\_Access   | Proximity to health facilities (added manually) |
-The dataset was enhanced with additional fields such as Delivery History and Hospital Access to improve model performance and insights for risk prediction.
-The dataset was cleaned, transformed, and used in training an AI model (XGBoost) for maternal risk prediction using Google BigQuery ML.
 
 ### Links
 - [BigQuery](https://console.cloud.google.com/bigquery?sq=954458391922:ad90499052664c02a6328e99d623c19f)
