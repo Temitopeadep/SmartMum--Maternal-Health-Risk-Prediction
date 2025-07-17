@@ -1,0 +1,95 @@
+-- Add High-Impact Synthetic Columns in BigQuery SQL
+
+CREATE OR REPLACE TABLE `smart-mum-project.smartmum.smart_mum_data_enhanced` AS
+SELECT
+  *,
+  -- Hospital_Access 
+  CASE 
+    WHEN Region = 'Rural' AND ANC_Visits = 0 THEN 'Low'
+    WHEN Region = 'Rural' AND ANC_Visits <= 2 THEN 'Medium'
+    ELSE 'High'
+  END AS Hospital_Access,
+
+  --  Delivery_History 
+  CASE
+    WHEN Gravidity = 0 THEN 'FirstTime'
+    WHEN Gravidity BETWEEN 1 AND 2 THEN 'Moderate'
+    ELSE 'Multiple'
+  END AS Delivery_History
+FROM
+  `smart-mum-project.smartmum.smart_mum_data`;
+
+
+-- Train XGBoost Model using BigQuery ML
+CREATE OR REPLACE MODEL `smart-mum-project.smartmum.smart_mum_data_model_xgb`
+OPTIONS (
+  model_type = 'BOOSTED_TREE_CLASSIFIER',
+  input_label_cols = ['RiskLevel'],
+  auto_class_weights = TRUE,
+  max_iterations = 50,
+  enable_global_explain = TRUE
+) AS
+SELECT
+  Age,
+  SystolicBP,
+  DiastolicBP,
+  BS,
+  BodyTemp,
+  HeartRate,
+  ANC_Visits,
+  BMI,
+  Trimester,
+  Gravidity,
+  Region,
+  Mother_Education,
+  Hospital_Access,
+  Delivery_History,
+  RiskLevel
+FROM
+  `smart-mum-project.smartmum.smart_mum_data_enhanced`;
+
+
+-- : Evaluate the Model
+SELECT *
+FROM ML.EVALUATE(MODEL `smart-mum-project.smartmum.smart_mum_data_model_xgb`);
+
+
+-- Make Predictions
+SELECT
+  *,
+  predicted_RiskLevel,
+  predicted_RiskLevel_probs
+FROM
+  ML.PREDICT(MODEL `smart-mum-project.smartmum.smart_mum_data_model_xgb`,
+    (
+      SELECT *
+      FROM `smart-mum-project.smartmum.smart_mum_data_enhanced`
+    )
+  );
+
+  -- Extract prediction probabilities per class
+SELECT
+  p.Age,
+  p.SystolicBP,
+  p.DiastolicBP,
+  p.BS,
+  p.BodyTemp,
+  p.HeartRate,
+  p.ANC_Visits,
+  p.BMI,
+  p.Trimester,
+  p.Gravidity,
+  p.Region,
+  p.Mother_Education,
+  p.Hospital_Access,
+  p.Delivery_History,
+  p.predicted_RiskLevel,
+
+  (SELECT prob FROM UNNEST(p.predicted_RiskLevel_probs) WHERE label = 'Low') AS prob_Low,
+  (SELECT prob FROM UNNEST(p.predicted_RiskLevel_probs) WHERE label = 'Medium') AS prob_Medium,
+  (SELECT prob FROM UNNEST(p.predicted_RiskLevel_probs) WHERE label = 'High') AS prob_High
+
+FROM
+  ML.PREDICT(MODEL `smart-mum-project.smartmum.smart_mum_data_model_xgb`,
+    (SELECT * FROM `smart-mum-project.smartmum.smart_mum_data_enhanced`)
+  ) p;
