@@ -17,4 +17,4 @@ To reduce maternal health risks through early prediction and actionable insights
 - Power Apps form for public access without technical knowledge.
 
 ### Dashboard
-![Screenshot]("C:\Users\USER\OneDrive\Dokumenty\dashboard1.png")
+![Screenshot](https://github.com/Temitopeadep/SmartMum--Maternal-Health-Risk-Prediction/blob/main/dashboard1.png)
