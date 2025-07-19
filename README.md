@@ -10,7 +10,7 @@ To reduce maternal health risks through early prediction and actionable insights
 
 ## Project Components
 ### Executive Summary
-1. Model: XGBoost via BigQuery ML
+1. Model: XGBoost via BigQuery ML.
 2. Accuracy: 89.6%
 3. 	Recall: 87.3%
 4. Precision: 88.1%
