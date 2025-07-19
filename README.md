@@ -1,4 +1,4 @@
-# SmartMum: Predicting and Visualizing Maternal Health Risk Through AI (XGBoost Model)
+# SmartMum: Maternal Health Risk Prediction Through AI (XGBoost Model)
 ![Model Accuracy](https://img.shields.io/badge/Accuracy-89.6%25-brightgreen)
 ![AUC Score](https://img.shields.io/badge/AUC-0.95-blue)
 
